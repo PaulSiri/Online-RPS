@@ -12,3 +12,12 @@ body{
 	text-align: center;
 	margin: auto;
 }
+
+#game-page{
+	display: none;
+}
+
+.icon{
+	height: 50vmin;
+	max-width: 30vw;
+}

@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "socket.io": "*",
-    "express": "*"
+    "express": "*",
+    "socket.io-redis": "*",
+    "socket.io-emitter": "*"
   }
 }

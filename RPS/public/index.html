@@ -47,13 +47,40 @@
 	</div>
 	<div class="container" id = "game-page">
 		<div class="row justify-content-center">
-			<h1>Choose Rock, Paper, or Scissors!</h1>
+			<div class="col-10">
+				<h1>Choose Rock, Paper, or Scissors!</h1>
+			</div>
+			<div class="col-2">
+				<h1 id = "room-number"></h3>
+			</div>
+		</div> 
+		<div class="row justify-content-center">
+			<div class="col-4">
+				<button id="rock-button">
+					<img src="resources/rock.png" class="icon">
+				</button>
+			</div>
+			<div class="col-4">
+				<button id="paper-button">
+					<img src="resources/paper.png" class="icon">
+				</button>
+			</div>
+			<div class="col-4">
+				<button id="scissors-button">
+					<img src="resources/scissors.png" class="icon">
+				</button>
+			</div>
+		</div>
+		<br>
+		<div class="row justify-content-center">
+			<h1 id = "client-output"></h1>
 		</div>
 	</div>
 
 	<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src = "/socket.io/socket.io.js"></script>
 
 	<script src = "main.js"></script>
 </body>
