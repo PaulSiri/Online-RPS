@@ -1,1 +1,1 @@
-# Online Gambling RPS
+# Online RPS
