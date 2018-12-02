@@ -23,7 +23,7 @@ io.sockets.on('connection', (socket) =>{
 	connections.push(socket);
 	console.log("Connected: %s sockets connected", connections.length);
 
-	//Increase roomno 2 clients are present in a room.
+	//Increase roomno if 2 clients are present in a room.
     if(io.sockets.adapter.rooms["room-" + roomno] && io.sockets.adapter.rooms["room-" + roomno].length > 1){
     	roomno++;
     }
@@ -32,8 +32,10 @@ io.sockets.on('connection', (socket) =>{
     socket.room = "room-"+roomno;
     if(io.sockets.adapter.rooms["room-" + roomno].length === 1){
     	socket.player = 1;
+    	io.sockets.in(socket.room).emit('waitForOpponent');
     }else{
     	socket.player = 2;
+    	io.sockets.in(socket.room).emit('startGame');
     }
 
     //Send this event to everyone in the room.
@@ -50,8 +52,6 @@ io.sockets.on('connection', (socket) =>{
     	socket.to(socket.room).emit('opponentMoved', socket.move);
 
     	socket.on('compareMoves', (moves) =>{
-    		console.log(moves.myMove);
-    		console.log(moves.opponentMove);
 
     		if(moves.myMove == "rock"){
     			switch(moves.opponentMove){
@@ -114,6 +114,7 @@ io.sockets.on('connection', (socket) =>{
 		socket.leave(socket.room);
 
 		io.sockets.in(socket.room).emit('setPlayerOne');
+		io.sockets.in(socket.room).emit('playerLeft');
 
 		if(io.sockets.adapter.rooms[socket.room] && io.sockets.adapter.rooms[socket.room].length < 1){
 			roomno--;
